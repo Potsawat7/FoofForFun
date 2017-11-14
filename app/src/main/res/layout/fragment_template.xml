@@ -5,13 +5,15 @@
     tools:context="th.ac.ku.foodforfun.Template">
 
     <!-- TODO: Update blank fragment layout -->
-   <GridView
-       android:id="@+id/gridView"
-       android:numColumns="2"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       tools:ignore="InvalidId">
-
-   </GridView>
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="90dp"
+        android:numColumns="2"
+        android:verticalSpacing="5dp"
+        android:horizontalSpacing="5dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"/>
 
 </RelativeLayout>

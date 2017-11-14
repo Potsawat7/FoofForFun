@@ -69,6 +69,7 @@ public class NavigationMainActivity extends AppCompatActivity
 //        deleteDB();
 
         HomePage homePage = new HomePage();
+        homePage.lstAll = getDataFromDB();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout, homePage,"fragment1");
         fragmentTransaction.commit();
@@ -108,37 +109,7 @@ public class NavigationMainActivity extends AppCompatActivity
 //        databaseAccess.close();
 //    }
 
-//    private void connectDatabase() {
-//        dataLst = new ArrayList<>();
-//        try{
-//            Class.forName("org.sqlite.JDBC");
-//            String dbURL = "jdbc:sqlite:foodDB.db";
-//            Connection conn = DriverManager.getConnection(dbURL);
-//            if(conn!=null) {
-//                String query = "select * from foodInfo";
-//                Statement statement = conn.createStatement();
-//                ResultSet resultSet = statement.executeQuery(query);
-//
-//                while (resultSet.next()){
-//                    String name = resultSet.getString(0);
-//                    String cate = resultSet.getString(1);
-//                    String rec = resultSet.getString(2);
-//                    String stp = resultSet.getString(3);
-//                    String img = resultSet.getString("imageName");
-//                    dataLst.add(new FoodInfo(name,cate,rec,stp,img));
-//
-//
-//                }
-//                System.out.println("list size " + dataLst.size());
-//            }
-//            conn.close();
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
+
 
     @Override
     public void onBackPressed() {
@@ -183,6 +154,7 @@ public class NavigationMainActivity extends AppCompatActivity
             // Handle the Home action
             setTitle("HOME");
             HomePage homePage = new HomePage();
+            homePage.lstAll = getDataFromDB();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frameLayout, homePage,"fragment1");
             fragmentTransaction.commit();
