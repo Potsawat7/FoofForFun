@@ -50,13 +50,13 @@ public class HomePage extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 int index = (int) view.getY();
-
+                Log.d("onClick listview i", i + "");
                 Log.i("listView", "onItemClick: in onItem");
                 Template template = new Template();
                 template.setAllData(lstAll);
                 Log.i("listView", "onItemClick: " + lstAll.isEmpty());
-                template.setSearchFor(lstData.get(index).nameCate);
-                Log.i("listView", "onItemClick: " + lstData.get(index).nameCate);
+                template.setSearchFor(lstData.get(i).nameCate);
+                Log.i("listView", "onItemClick: " + lstData.get(i).nameCate);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.frameLayout, template, "fragment1");
                 fragmentTransaction.commit();

@@ -1,12 +1,18 @@
 package th.ac.ku.foodforfun;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,7 +54,21 @@ public class FoodHomeAdapter extends ArrayAdapter<FoodHomeMenuInfo> {
         FoodHomeMenuInfo foodInfo = data.get(position);
         holder.tv.setText(foodInfo.nameCate);
         holder.iv.setImageResource(foodInfo.resIdImages);
+//        holder.iv.setMaxHeight(100);
+
+
+//        Resources res = getContext().getResources();
+//        String mDrawableName = "breakfast_pic";
+//        int resID = res.getIdentifier(mDrawableName , "drawable", getContext().getPackageName());
+//        Log.d("resId", resID + "");
+//        Log.d("resIdImages", foodInfo.resIdImages + "");
+//        holder.iv.setImageResource(resID);
+//        Drawable drawable = res.getDrawable(resID );
+//        holder.iv.setImageDrawable(drawable );
+
 
         return convertView;
     }
+
+
 }
