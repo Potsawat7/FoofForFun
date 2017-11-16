@@ -8,19 +8,26 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="2dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/breakfast_pic" />
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:background="@color/colorPrimaryDark">
     <TextView
         android:id="@+id/foodNameField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="43dp"
-        android:layout_marginStart="26dp"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="20dp"
         android:text="TextView"
         android:textStyle="bold" />
 
@@ -28,9 +35,8 @@
         android:id="@+id/catNameField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_alignStart="@+id/foodNameField"
+        android:layout_marginLeft="20dp"
         android:text="TextView"
         android:textStyle="italic" />
-
+    </RelativeLayout>
 </RelativeLayout>

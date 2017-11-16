@@ -12,8 +12,10 @@
         android:columnWidth="90dp"
         android:numColumns="2"
         android:verticalSpacing="5dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:horizontalSpacing="5dp"
         android:stretchMode="columnWidth"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fadeScrollbars="true"/>
 
 </RelativeLayout>

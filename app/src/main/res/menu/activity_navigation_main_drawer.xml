@@ -22,6 +22,10 @@
             android:icon="@drawable/icon_dinner"
             android:title="Dinner" />
         <item
+            android:id="@+id/nav_grill"
+            android:icon="@drawable/icon_grill"
+            android:title="Grill" />
+        <item
             android:id="@+id/nav_dessert"
             android:icon="@drawable/icon_dessert"
             android:title="Dessert" />

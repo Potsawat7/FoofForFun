@@ -3,6 +3,7 @@ package th.ac.ku.foodforfun;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,15 +44,18 @@ public class Template extends Fragment {
         gridView = (GridView) view.findViewById(R.id.gridView);
 //        List<FoodInfo> allData = mainActivity.getDataLst();
         showdataLst = new ArrayList<>();
+
         adapter = new FoodTemplateAdapter(getContext(),R.layout.template_item,showdataLst);
-        gridView.setAdapter(adapter);
+
 
         for (FoodInfo info: allData) {
+
             if(info.getCategory().equals(getSearchFor())){
+                Log.i("In Template after if", "onCreateView: food cate "+ info.getCategory() + "   search for " + getSearchFor() + "image : " + info.getImage());
                 showdataLst.add(info);
             }
         }
-
+        gridView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
         return view;

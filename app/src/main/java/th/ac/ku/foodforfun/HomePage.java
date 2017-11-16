@@ -37,8 +37,10 @@ public class HomePage extends Fragment {
 
         lstData = new ArrayList<>();
         lstData.add(new FoodHomeMenuInfo("Breakfast", R.drawable.breakfast_pic));
-        lstData.add(new FoodHomeMenuInfo("lunch", R.drawable.lunchpic));
-
+        lstData.add(new FoodHomeMenuInfo("Lunch", R.drawable.lunchpic));
+        lstData.add(new FoodHomeMenuInfo("Dinner",R.drawable.dinner_pic));
+        lstData.add(new FoodHomeMenuInfo("Grill",R.drawable.grill_pic));
+        lstData.add(new FoodHomeMenuInfo("Dessert",R.drawable.dessert_pic));
 
         ListView listView = (ListView) view.findViewById(R.id.listViewPageHome);
         FoodHomeAdapter adapter = new FoodHomeAdapter(getContext(), R.layout.home_item, lstData);
@@ -49,12 +51,11 @@ public class HomePage extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                int index = (int) view.getY();
+
                 Log.d("onClick listview i", i + "");
-                Log.i("listView", "onItemClick: in onItem");
                 Template template = new Template();
                 template.setAllData(lstAll);
-                Log.i("listView", "onItemClick: " + lstAll.isEmpty());
+
                 template.setSearchFor(lstData.get(i).nameCate);
                 Log.i("listView", "onItemClick: " + lstData.get(i).nameCate);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();

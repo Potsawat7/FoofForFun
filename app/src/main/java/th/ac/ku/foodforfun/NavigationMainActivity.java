@@ -35,7 +35,7 @@ public class NavigationMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     DBAccess databaseAccess;
-    Template template;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,12 +60,12 @@ public class NavigationMainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        template = new Template();
+
 
 //        accessDB();
         this.databaseAccess = DBAccess.getInstance(this);
 //        insertFood();
-        template.setAllData(getDataFromDB());
+
 //        deleteDB();
 
         HomePage homePage = new HomePage();
@@ -74,8 +74,26 @@ public class NavigationMainActivity extends AppCompatActivity
         fragmentTransaction.replace(R.id.frameLayout, homePage,"fragment1");
         fragmentTransaction.commit();
 
+        setFab();
 //        connectDatabase();
 
+    }
+
+    private void setFab() {
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setTitle("HOME");
+                HomePage homePage = new HomePage();
+                homePage.lstAll = getDataFromDB();
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frameLayout, homePage,"fragment1");
+                fragmentTransaction.commit();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+            }
+        });
     }
 
     private void deleteDB() {
@@ -94,6 +112,10 @@ public class NavigationMainActivity extends AppCompatActivity
         databaseAccess.open();
         databaseAccess.insertContact(new FoodInfo("padthai","Breakfast","ssss","aaaa","breakfast_pic"));
         databaseAccess.insertContact(new FoodInfo("padJapan","Breakfast","ssss","aaaa","breakfast_pic"));
+        databaseAccess.insertContact(new FoodInfo("padIndia","Lunch","ssss","aaaa","lunchpic"));
+        databaseAccess.insertContact(new FoodInfo("chicken","Dinner","ssss","aaaa","dinner_pic"));
+        databaseAccess.insertContact(new FoodInfo("steak","Grill","ssss","aaaa","grill_pic"));
+        databaseAccess.insertContact(new FoodInfo("brownie","Dessert","ssss","aaaa","dessert_pic"));
         databaseAccess.close();
 
     }
@@ -161,23 +183,36 @@ public class NavigationMainActivity extends AppCompatActivity
         } else if (id == R.id.nav_breakfast) {
             setTitle("Breakfast");
 //            Breakfast breakfast = new Breakfast();
-
+            Template template = new Template();
             template.setSearchFor("Breakfast");
+            template.setAllData(getDataFromDB());
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frameLayout, template,"fragment2");
             fragmentTransaction.commit();
         } else if (id == R.id.nav_lunch) {
             setTitle("Lunch");
 
-//            Template template = new Template();
+            Template template = new Template();
             template.setSearchFor("Lunch");
+            template.setAllData(getDataFromDB());
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frameLayout, template,"fragment2");
             fragmentTransaction.commit();
         } else if (id == R.id.nav_dinner) {
             setTitle("Dinner");
-//            Template template = new Template();
+            Template template = new Template();
             template.setSearchFor("Dinner");
+            template.setAllData(getDataFromDB());
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frameLayout, template,"fragment2");
+            fragmentTransaction.commit();
+        }
+        else if (id == R.id.nav_grill) {
+            setTitle("Grill");
+
+            Template template = new Template();
+            template.setSearchFor("Grill");
+            template.setAllData(getDataFromDB());
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frameLayout, template,"fragment2");
             fragmentTransaction.commit();
@@ -185,15 +220,13 @@ public class NavigationMainActivity extends AppCompatActivity
         else if (id == R.id.nav_dessert) {
             setTitle("Dessert");
 
-//            Template template = new Template();
+            Template template = new Template();
             template.setSearchFor("Dessert");
+            template.setAllData(getDataFromDB());
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.frameLayout, template,"fragment5");
+            fragmentTransaction.replace(R.id.frameLayout, template,"fragment2");
             fragmentTransaction.commit();
         }
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
 
 
 
@@ -201,4 +234,6 @@ public class NavigationMainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }

@@ -1,6 +1,7 @@
 package th.ac.ku.foodforfun;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -48,7 +49,7 @@ public class FoodTemplateAdapter extends BaseAdapter {
     static class ViewHolder{
         ImageView imageView;
         TextView textView1, textView2;
-        ViewHolder holder;
+
     }
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
@@ -58,7 +59,7 @@ public class FoodTemplateAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(layout,null);
             holder = new ViewHolder();
-            Log.i("kuy", "getView: in getView " + "Kuyyyyyyy");
+//            Log.i("kuy", "getView: in getView " + "Kuyyyyyyy");
             holder.textView1 = (TextView) row.findViewById(R.id.foodNameField);
             holder.textView2 = (TextView) row.findViewById(R.id.catNameField);
             holder.imageView = (ImageView) row.findViewById(R.id.imageView);
@@ -68,20 +69,20 @@ public class FoodTemplateAdapter extends BaseAdapter {
             holder = (ViewHolder) row.getTag();
         }
         FoodInfo foodInfo = foodList.get(i);
-        Log.i("food", "getView: foodInfo" + foodInfo.getName());
-//        Log.i("txt", "getView: txtView " + holder.textView1);
+        Log.i("food", "getView: foodInfo  : " + foodInfo.getName());
+
         holder.textView1.setText(foodInfo.getName());
         holder.textView2.setText(foodInfo.getCategory());
-//        Field[] drawables = android.R.drawable.class.getFields();
-//        for (Field f : drawables) {
-//            if(foodInfo.getImage().equals(f.getName())){
-//                holder.imageView.setImageDrawable(Drawable.createFromPath("R.drawable." + f.getName()));
-//            }
-//        }
 
-//        byte[] foodImage = foodInfo.getImage();
-//        Bitmap bitmap = BitmapFactory.decodeByteArray(foodImage, 0,foodImage.length);
-//        holder.imageView.setImageBitmap(bitmap);
+
+        Resources res = this.context.getResources();
+        String mDrawableName = foodInfo.getImage();
+        Log.i("img", "getView: imageName " + mDrawableName);
+        int resID = res.getIdentifier(mDrawableName , "drawable", this.context.getPackageName());
+
+        holder.imageView.setImageResource(resID);
+
+
 
         return row;
     }

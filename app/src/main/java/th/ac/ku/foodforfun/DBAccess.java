@@ -70,8 +70,8 @@ public class DBAccess {
         List<FoodInfo> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM FoodDB", null);
         Log.i("check", "getAllData: cursor  " + cursor.getCount());
-        System.out.println("first " +cursor.moveToFirst());
-        System.out.println("sec " +cursor.moveToNext());
+//        System.out.println("first " +cursor.moveToFirst());
+//        System.out.println("sec " +cursor.moveToNext());
 
         while (cursor.moveToNext()) {
 
