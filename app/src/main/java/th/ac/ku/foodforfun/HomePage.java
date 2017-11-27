@@ -54,6 +54,7 @@ public class HomePage extends Fragment {
 
                 Log.d("onClick listview i", i + "");
                 Template template = new Template();
+
                 template.setAllData(lstAll);
 
                 template.setSearchFor(lstData.get(i).nameCate);

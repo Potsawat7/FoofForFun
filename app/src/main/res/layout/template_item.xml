@@ -19,17 +19,19 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView"
         android:background="@color/colorPrimaryDark">
-    <TextView
-        android:id="@+id/foodNameField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="20dp"
-        android:text="TextView"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/foodNameField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="casual"
+            android:text="TextView"
+            android:textStyle="bold" />
 
     <TextView
         android:id="@+id/catNameField"

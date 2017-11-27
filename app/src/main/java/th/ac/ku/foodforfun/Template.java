@@ -3,10 +3,12 @@ package th.ac.ku.foodforfun;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import java.util.ArrayList;
@@ -49,7 +51,7 @@ public class Template extends Fragment {
 
 
         for (FoodInfo info: allData) {
-
+            System.out.println(info.getName() + " " +info.getCategory() + " " + info.getImage());
             if(info.getCategory().equals(getSearchFor())){
                 Log.i("In Template after if", "onCreateView: food cate "+ info.getCategory() + "   search for " + getSearchFor() + "image : " + info.getImage());
                 showdataLst.add(info);
@@ -57,6 +59,21 @@ public class Template extends Fragment {
         }
         gridView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ContentPage contentPage = new ContentPage();
+                contentPage.setAllLstData(allData);
+                contentPage.setContentTo(showdataLst.get(i).getImage());
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frameLayout, contentPage,"fragment2");
+                fragmentTransaction.commit();
+            }
+        });
+
 
         return view;
     }
