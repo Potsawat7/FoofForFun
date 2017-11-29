@@ -13,5 +13,7 @@ tools:showIn="@layout/app_bar_navigation_main">
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bg"
+        
         android:theme="@style/AppTheme"></FrameLayout>
 </RelativeLayout>
