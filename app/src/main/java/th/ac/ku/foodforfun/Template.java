@@ -52,7 +52,7 @@ public class Template extends Fragment {
 
         for (FoodInfo info: allData) {
             System.out.println(info.getName() + " " +info.getCategory() + " " + info.getImage());
-            if(info.getCategory().equals(getSearchFor())){
+            if(info.getCategory().equals(getSearchFor().toUpperCase()) || info.getName().equals(getSearchFor()) || info.getName().contains(getSearchFor()) || info.getCategory().contains(getSearchFor().toUpperCase())){
                 Log.i("In Template after if", "onCreateView: food cate "+ info.getCategory() + "   search for " + getSearchFor() + "image : " + info.getImage());
                 showdataLst.add(info);
             }
@@ -69,7 +69,7 @@ public class Template extends Fragment {
                 contentPage.setAllLstData(allData);
                 contentPage.setContentTo(showdataLst.get(i).getImage());
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout, contentPage,"fragment2");
+                fragmentTransaction.replace(R.id.frameLayout, contentPage,"fragment2").addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });

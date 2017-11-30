@@ -60,7 +60,7 @@ public class HomePage extends Fragment {
                 template.setSearchFor(lstData.get(i).nameCate);
                 Log.i("listView", "onItemClick: " + lstData.get(i).nameCate);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout, template, "fragment1");
+                fragmentTransaction.replace(R.id.frameLayout, template, "fragment1").addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });
